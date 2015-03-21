@@ -1,16 +1,20 @@
 package com.emas.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.AutoPopulatingList;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.emas.util.PersonalInfoElementFactory;
 import com.emas.viewmodel.ClaimViewModel;
 import com.emas.viewmodel.HospitalViewModel;
 import com.emas.viewmodel.PersonalInfoViewModel;
@@ -25,6 +29,11 @@ public class HomeController {
 	
 	public final String HOSPITAL_VM_CREATE = "hospital_create";
 	public final String CLAIM_VM_CREATE = "claim_create";
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder){
+	    binder.setAutoGrowNestedPaths(false);
+	}
 	
 	@RequestMapping( value = "/", method = RequestMethod.GET )
 	public ModelAndView index() {
@@ -44,38 +53,41 @@ public class HomeController {
 	@RequestMapping( value = "/hospital", method = RequestMethod.POST )
 	public ModelAndView registerHospital( @ModelAttribute( HOSPITAL_VM_CREATE ) HospitalViewModel vm ) {
 		
-		
 		return new ModelAndView( HOSPITAL_VIEW );
 	}
 	
 	@RequestMapping( value = "/claim", method = RequestMethod.GET )
-	public ModelAndView registerClaim( @ModelAttribute( CLAIM_VM_CREATE ) ClaimViewModel vm, HttpServletRequest request ) {
+	public ModelAndView registerClaim( @ModelAttribute( CLAIM_VM_CREATE ) ClaimViewModel vm ) {
+				
+		List<PersonalInfoViewModel> list = new AutoPopulatingList<PersonalInfoViewModel>( PersonalInfoViewModel.class );
+		list.add( new PersonalInfoViewModel( "test 1", "", "", "" ) );
+		list.add( new PersonalInfoViewModel( "test 2", "", "", "" ) );
 		
-		List<PersonalInfoViewModel> personalInfoList = new ArrayList<PersonalInfoViewModel>();
-		
-		PersonalInfoViewModel personalInfoVM = new PersonalInfoViewModel( "test", "test", "", "", true );
-//		PersonalInfoViewModel personalInfoVM1 = new PersonalInfoViewModel( "test1", "test1", "", "", true );
-//		PersonalInfoViewModel personalInfoVM2 = new PersonalInfoViewModel( "test2", "test2", "", "", true );
-		personalInfoList.add( personalInfoVM );
-//		personalInfoList.add( personalInfoVM1 );
-//		personalInfoList.add( personalInfoVM2 );
-		vm.setPersonalInfoList( personalInfoList );
+		vm.setPersonalInfoList( list );
 		vm.setAdmissionId( "testing ...." );
 		vm.setMemberName( "testing member ..." );
-		
+
 		ModelAndView modelAndView = new ModelAndView( CLAIM_VIEW );
-		modelAndView.addObject( CLAIM_VM_CREATE, vm );
-		modelAndView.addObject( "personalInfo", vm.getPersonalInfoList() );
 		return modelAndView;
 	}
 	
-	/*@RequestMapping( value="/claim/getChildRow", method = RequestMethod.GET )
-	public ModelAndView getChildRow( @RequestParam("index") String index ) {
-		
-		PersonalInfoViewModel personalInfoVM = new PersonalInfoViewModel();
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName( "/partial/personal_info.jsp" );
+	@RequestMapping( value = "/claim", method = RequestMethod.POST )
+	public ModelAndView registerClaimPOST( @ModelAttribute( CLAIM_VM_CREATE ) ClaimViewModel vm, BindingResult result ) {
+				
+		ModelAndView modelAndView = new ModelAndView( CLAIM_VIEW );
 		return modelAndView;
-	}*/
+	}
+	
+	@RequestMapping( value="/claim/getChildRow", method = RequestMethod.GET )
+	public String getChildRow( @RequestParam("index") int index, Model model ) {
+		
+		ClaimViewModel vm = new ClaimViewModel();
+		vm.setPersonalInfoList( new AutoPopulatingList<PersonalInfoViewModel>(new PersonalInfoElementFactory()	) );
+		
+		model.addAttribute( CLAIM_VM_CREATE, vm );
+		model.addAttribute( "index", index );
+		
+		return "partial/personal_info";
+	}
 	
 }

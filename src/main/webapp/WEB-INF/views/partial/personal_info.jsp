@@ -1,11 +1,30 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<c:if test=" ${ param.myRequestModel.newRow } " >
-<tr>
-	<td> <form:input path="${ param.myRequestModel.name }"/>  </td>
-	<td> <form:input path="${ param.myRequestModel.fatherName }"/> </td>
-	<td> <form:input path="${ param.myRequestModel.age }"/> </td>
-	<td> <form:input path="${ param.myRequestModel.remarks }"/> </td>
-</tr>
-</c:if>
+		
+		<tr>
+			<td>
+				<%-- <spring:bind path="personalInfoList[${ index }].name"> --%>
+					<form:input path="claim_create.personalInfoList[${ index }].name" />
+				<%-- </spring:bind> --%>
+			</td>
+			<td>
+				<%-- <spring:bind path="personalInfoList[${ index }].fatherName">
+					<form:input path="${ status.expression }" />
+				</spring:bind> --%>
+				<form:input path="claim_create.personalInfoList[${ index }].fatherName" />
+			</td>
+			<td>
+				<%-- <spring:bind path="personalInfoList[${ index }].age">
+					<form:input path="${ status.expression }" />
+				</spring:bind> --%>
+				<form:input path="claim_create.personalInfoList[${ index }].age" />
+			</td>
+			<td>
+				<%-- <spring:bind path="personalInfoList[${ index }].remarks">
+					<form:input path="${ status.expression }" />
+				</spring:bind> --%>
+				<form:input path="claim_create.personalInfoList[${ index }].remarks" />
+			</td>
+		</tr>

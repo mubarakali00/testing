@@ -6,7 +6,6 @@ public class PersonalInfoViewModel {
 	private String fatherName;
 	private String age;
 	private String remarks;
-	private boolean newRow;
 	
 	public String getName() {
 		return name;
@@ -32,25 +31,16 @@ public class PersonalInfoViewModel {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public boolean isNewRow() {
-		return newRow;
-	}
-	public void setNewRow(boolean newRow) {
-		this.newRow = newRow;
-	}
-	
 	public PersonalInfoViewModel() {
 		
 	}
-	
 	public PersonalInfoViewModel(String name, String fatherName, String age,
-			String remarks, boolean newRow) {
+			String remarks) {
 		super();
 		this.name = name;
 		this.fatherName = fatherName;
 		this.age = age;
 		this.remarks = remarks;
-		this.newRow = newRow;
 	}
-	
+
 }
