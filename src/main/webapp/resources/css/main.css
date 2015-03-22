@@ -1,0 +1,35 @@
+body {
+	font-family: monospace;
+	font-size: medium;
+}
+
+div#wrapDiv
+{
+	min-width: 600px;
+	max-width: 2500px;
+}
+
+div#mainContent
+{
+    padding-left: 140px;
+    padding-right: 140px;
+}
+
+div#leftSidebar
+{
+    float: left;
+    background-color: blue;
+}
+
+div#rightSidebar
+{
+    float: right;
+    background-color: blue;
+}
+
+div#footerSidebar
+{
+    clear: both;
+    background-color: black;
+}
+

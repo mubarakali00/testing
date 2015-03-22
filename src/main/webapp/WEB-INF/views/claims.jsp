@@ -6,20 +6,20 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script src="<c:url value="/resources/js/jquery-1.11.2.min.js" />" ></script>
-	<title>Testing of master details working:</title>
-</head>
-<body>
-<form:form id="claimForm" action="claim" method="POST" modelAttribute="claim_create">
+<t:genericpage>
+    <jsp:attribute name="header">
+      <h1>Welcome to the generic header...</h1>
+    </jsp:attribute>
+    <jsp:attribute name="footer">
+      <p id="copyright">Copyright 1927, Future Bits When There Be Bits Inc.</p>
+    </jsp:attribute>
+    <jsp:body>
+        <form:form id="claimForm" action="claim" method="POST" modelAttribute="claim_create">
 
 	<form:input path="admissionId"/> <br/>
 	<form:input path="memberName"/> <br/>
-	
-	<label></label>
 	
 	<table id="childTable" border="1px">
 	<tr>
@@ -72,12 +72,12 @@ $( function() {
 	
 	     $.get("claim/getChildRow", { index: childTableIndex }, function (data) { 
 	
-	    	 alert(data);
+	    	 //alert(data);
 	        childTable.append(data);
 	        $("#childIndex").val(childTableIndex + 1);
 	    });
 	});
 });
 </script>
-</body>
-</html>
+    </jsp:body>
+</t:genericpage>

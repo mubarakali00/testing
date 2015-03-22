@@ -4,14 +4,17 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<t:genericpage>
+    <jsp:attribute name="header">
+      <h1>Welcome to the generic header...</h1>
+    </jsp:attribute>
+    <jsp:attribute name="footer">
+      <p id="copyright">Copyright 1927, Future Bits When There Be Bits Inc.</p>
+    </jsp:attribute>
+    <jsp:body>
 	<a href="<c:url value='/claim'/>"> Claims page </a><br/>
 	<a href="<c:url value='/hospital'/>"> Hospital page </a>
-</body>
-</html>
+</jsp:body>
+</t:genericpage>
