@@ -3,7 +3,6 @@ package com.emas.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.AutoPopulatingList;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -82,15 +81,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping( value="/claim/getChildRow", method = RequestMethod.GET )
-	public String getChildRow( @RequestParam("index") int index, Model model ) {
+	public ModelAndView getChildRow( @RequestParam("index") int index, @ModelAttribute( CLAIM_VM_CREATE ) ClaimViewModel vm ) {
 		
-		ClaimViewModel vm = new ClaimViewModel();
 		vm.setPersonalInfoList( new AutoPopulatingList<PersonalInfoViewModel>( new PersonalInfoElementFactory() ) );
+		ModelAndView modelAndView = new ModelAndView( "partial/personal_info" );
+		modelAndView.addObject( CLAIM_VM_CREATE, vm );
+		modelAndView.addObject( "index", index );
 		
-		model.addAttribute( CLAIM_VM_CREATE, vm );
-		model.addAttribute( "index", index );
-		
-		return "partial/personal_info";
+		return modelAndView;
 	}
 	
 }
