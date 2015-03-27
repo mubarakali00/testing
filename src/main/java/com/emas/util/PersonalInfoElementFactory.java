@@ -8,7 +8,7 @@ import com.emas.viewmodel.PersonalInfoViewModel;
 public class PersonalInfoElementFactory implements ElementFactory<PersonalInfoViewModel> {
 
 	@Override
-	public PersonalInfoViewModel createElement(int index) throws ElementInstantiationException {
+	public PersonalInfoViewModel createElement( int index ) throws ElementInstantiationException {
 		
 		PersonalInfoViewModel vm = new PersonalInfoViewModel();
 		vm.setAge("");

@@ -30,10 +30,13 @@ public class HomeController {
 	public final String HOSPITAL_VM_CREATE = "hospital_create";
 	public final String CLAIM_VM_CREATE = "claim_create";
 	
+	//[start] InitBinder function to set the auto grow of list as false.
 	@InitBinder
 	public void initBinder(WebDataBinder binder){
-	    binder.setAutoGrowNestedPaths(false);
+	    
+		binder.setAutoGrowNestedPaths(false);
 	}
+	//[end]
 	
 	@RequestMapping( value = "/", method = RequestMethod.GET )
 	public ModelAndView index() {
@@ -82,7 +85,7 @@ public class HomeController {
 	public String getChildRow( @RequestParam("index") int index, Model model ) {
 		
 		ClaimViewModel vm = new ClaimViewModel();
-		vm.setPersonalInfoList( new AutoPopulatingList<PersonalInfoViewModel>(new PersonalInfoElementFactory()	) );
+		vm.setPersonalInfoList( new AutoPopulatingList<PersonalInfoViewModel>( new PersonalInfoElementFactory() ) );
 		
 		model.addAttribute( CLAIM_VM_CREATE, vm );
 		model.addAttribute( "index", index );
