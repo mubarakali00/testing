@@ -6,15 +6,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:genericpage>
+<t:genericpage title="Home Page">
+
     <jsp:attribute name="header">
-      <h1>Welcome to the generic header...</h1>
+      	<h1>Welcome to the generic header...</h1>
     </jsp:attribute>
-    <jsp:attribute name="footer">
-      <p id="copyright">Copyright 1927, Future Bits When There Be Bits Inc.</p>
-    </jsp:attribute>
+    
     <jsp:body>
-	<a href="<c:url value='/claim'/>"> Claims page </a><br/>
-	<a href="<c:url value='/hospital'/>"> Hospital page </a>
-</jsp:body>
+		<a href="<c:url value='/claim'/>"> Claims page </a><br/>
+		<a href="<c:url value='/hospital'/>"> Hospital page </a>
+	</jsp:body>
+	
 </t:genericpage>
