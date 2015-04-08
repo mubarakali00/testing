@@ -2,8 +2,6 @@ package com.emas.viewmodel;
 
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Required;
-
 public class HospitalViewModel {
 
 	private String id;
