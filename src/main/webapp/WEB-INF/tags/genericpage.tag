@@ -13,6 +13,24 @@
   <body>
   <div id="wrapDiv">
   
+        <div id="mainContent">
+        
+	        <div id="pageheader">
+	      		<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+	    	</div>
+	    	<div id="body">
+	      		<jsp:doBody/>
+	    	</div>
+	    	<div id="pagefooter">
+	      		<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
+	    	</div>
+	    	
+    	</div>
+    	
+    </div>
+    
+  <%-- <div id="wrapDiv">
+  
         <div id="leftSidebar">
         </div>
         
@@ -35,10 +53,7 @@
         
         <div id="footerSidebar">
         </div>
-    </div>
-    
-  <div id="wrapperDiv">
-    
-    </div>
+    </div> --%>
+  
   </body>
 </html>

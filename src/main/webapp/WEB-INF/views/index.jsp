@@ -7,14 +7,15 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:genericpage title="Home Page">
-
-    <jsp:attribute name="header">
-      	<h1>Welcome to the generic header...</h1>
-    </jsp:attribute>
     
     <jsp:body>
+    	<br>
 		<a href="<c:url value='/claim'/>"> Claims page </a><br/>
 		<a href="<c:url value='/hospital'/>"> Hospital page </a>
 	</jsp:body>
 	
 </t:genericpage>
+
+<%-- <jsp:attribute name="header">
+      	<h1>Welcome to the generic header...</h1>
+    </jsp:attribute> --%>

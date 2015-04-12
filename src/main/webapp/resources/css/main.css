@@ -1,6 +1,7 @@
 body {
+
 	font-family: monospace;
-	font-size: medium;
+	font-size: 10pt;
 }
 
 div#wrapDiv
@@ -11,8 +12,30 @@ div#wrapDiv
 
 div#mainContent
 {
-    padding-left: 140px;
-    padding-right: 140px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+div#mainContent #pageheader
+{
+	height: 150px;
+	background: rgba(237,237,237,1);
+	text-align: center;
+	/* vertical-align: middle; */
+	font-size: 22px;
+}
+
+div#body
+{
+	padding-left: 150px;
+    padding-right: 150px;
+    min-height: 350px;
+    font-family: sans-serif;
+}
+
+div#pagefooter
+{
+	text-align: center;
 }
 
 div#leftSidebar
