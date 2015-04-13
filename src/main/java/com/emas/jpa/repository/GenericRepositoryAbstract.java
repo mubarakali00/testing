@@ -15,7 +15,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Transactional
 public abstract class GenericRepositoryAbstract<T>
 {
 	private Class<T> classToBePassed;
@@ -52,16 +51,19 @@ public abstract class GenericRepositoryAbstract<T>
 		}
 	}
 
+	@Transactional
 	public T update(final T entity) 
 	{
 		return entityManager.merge(entity);
 	}
 
+	@Transactional
 	public void delete(final T entity) 
 	{
 		entityManager.remove(entity);
 	}
 
+	@Transactional
 	public void deleteById(final Integer entityId) 
 	{
 		final T entity = findById(entityId);

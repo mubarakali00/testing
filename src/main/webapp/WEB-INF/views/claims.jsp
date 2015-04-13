@@ -15,10 +15,61 @@
     
     <jsp:body>
         <form:form id="claimForm" action="claim" method="POST" modelAttribute="claim_create">
-
-	<form:input path="admissionId"/> <br/>
-	<form:input path="memberName"/> <br/>
+<div>
+	<p> <center> <label id="claim">The claims registration page.</label> </center> </p>
+	<table id="claimTable">
+		<tr>
+			<td id="tdLeft">
+				<spring:message code="claim.label.admissionId" />
+			</td>
+			<td id="tdRigth">
+				<form:input path="admissionId"/>
+			</td>
+		</tr>
+		<tr>
+			<td id="tdLeft">
+				<spring:message code="claim.label.memberName" />
+			</td>
+			<td id="tdRigth">
+				<form:input path="memberName"/>
+			</td>
+		</tr>
+		<tr>
+			<td id="tdLeft">
+			
+			</td>
+			<td id="tdRigth">
+			
+			</td>
+		</tr>
+		<tr>
+			<td id="tdLeft">
+			
+			</td>
+			<td id="tdRigth">
+			
+			</td>
+		</tr>
+		<tr>
+			<td id="tdLeft">
+			
+			</td>
+			<td id="tdRigth">
+			
+			</td>
+		</tr>
+		<tr>
+			<td id="tdLeft">
+			
+			</td>
+			<td id="tdRigth">
+			
+			</td>
+		</tr>
+	</table>
 	
+</div>
+<div>	
 	<table id="childTable" border="1px">
 	<tr>
 		<th> Name </th>
@@ -53,7 +104,7 @@
 	</table>
 	<input type="button" value="Add Row" id = "addRow" />
 	<input type="hidden" value="${ fn:length(claim_create.personalInfoList) }" id="childIndex" />
-	
+</div>
 	<br />
 	<br />
 	<br />

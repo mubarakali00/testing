@@ -33,6 +33,28 @@ div#body
     font-family: sans-serif;
 }
 
+#claim
+{
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#claimTable
+{
+	width: 100%;
+}
+
+#claimTable td#tdLeft
+{
+	width: 15%;
+}
+
+#claimTable td#tdRight
+{
+	width: 85%;
+}
+
 div#pagefooter
 {
 	text-align: center;
