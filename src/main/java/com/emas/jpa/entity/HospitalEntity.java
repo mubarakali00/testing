@@ -1,5 +1,6 @@
 package com.emas.jpa.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -14,10 +15,10 @@ import com.emas.jpa.util.EntityRef;
 
 @Entity
 @Table( name = EntityRef.TableHospital.TABLE_NAME )
-public class HospitalEntity {
+public class HospitalEntity implements Serializable {
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.TABLE )
+	@GeneratedValue( strategy = GenerationType.AUTO )
 	@Column( name = EntityRef.TableHospital.HOSPITAL_ID, nullable = false )
 	private Integer id;
 	
@@ -38,8 +39,68 @@ public class HospitalEntity {
 	
 	@Column( name = EntityRef.TableHospital.TELEPHONE_NUMBER, nullable = true, length = 255 )
 	private String telephoneNumber;
+
+	public HospitalEntity(){}
 	
-	@OneToOne( mappedBy = "hospitalEntity" )
-	private AdmissionEntity admissionEntity;
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+	public String getRegistrationNumber() {
+		return registrationNumber;
+	}
+
+	public void setRegistrationNumber(String registrationNumber) {
+		this.registrationNumber = registrationNumber;
+	}
+
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public String getMinistryHealthNumber() {
+		return ministryHealthNumber;
+	}
+
+	public void setMinistryHealthNumber(String ministryHealthNumber) {
+		this.ministryHealthNumber = ministryHealthNumber;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getTelephoneNumber() {
+		return telephoneNumber;
+	}
+
+	public void setTelephoneNumber(String telephoneNumber) {
+		this.telephoneNumber = telephoneNumber;
+	}
+	
+//	@OneToOne( mappedBy = "hospitalEntity" )
+//	private AdmissionEntity admissionEntity;
+	
+	
 	
 }

@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Import;
 
 
 @Configuration
-@ComponentScan("com.emas.*")
-@Import({ WebAppConfig.class })
+@ComponentScan({"com.emas.*","com.testing.*" })
+@Import({ WebAppConfig.class, TestingConfig.class, EmasConfig.class })
 public class ApplicationConfiguration 
 {
 	

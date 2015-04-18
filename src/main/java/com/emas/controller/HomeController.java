@@ -2,6 +2,7 @@ package com.emas.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.AutoPopulatingList;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.emas.bll.MainBll;
 import com.emas.util.PersonalInfoElementFactory;
 import com.emas.viewmodel.ClaimViewModel;
 import com.emas.viewmodel.HospitalViewModel;
@@ -22,6 +24,9 @@ import com.emas.viewmodel.PersonalInfoViewModel;
 @RequestMapping( value = "/" )
 public class HomeController {
 
+	@Autowired
+	private MainBll bll;
+	
 	public final String INDEX_VIEW = "index";
 	public final String HOSPITAL_VIEW = "hospital";
 	public final String CLAIM_VIEW = "claims";
@@ -40,6 +45,7 @@ public class HomeController {
 	@RequestMapping( value = "/", method = RequestMethod.GET )
 	public ModelAndView index() {
 		
+		testingDB();
 		return new ModelAndView( INDEX_VIEW ); 
 	}
 	
@@ -89,6 +95,12 @@ public class HomeController {
 		modelAndView.addObject( "index", index );
 		
 		return modelAndView;
+	}
+	
+	
+	private void testingDB() {
+		
+		bll.dbTesting();
 	}
 	
 }

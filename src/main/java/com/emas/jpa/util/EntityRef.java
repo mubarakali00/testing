@@ -89,5 +89,15 @@ public class EntityRef {
 		public static final String SERVICE_NAME = "service_name";		
 		
 	}
+	
+	public static class TableTest
+	{
+		public static final String TABLE_NAME = "test_table";
+		
+		public static final String ID = "id";
+		public static final String NAME = "name";
+		public static final String FATHER_NAME = "father_name";
+		
+	}
 
 }

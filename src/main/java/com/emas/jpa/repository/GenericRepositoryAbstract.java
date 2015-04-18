@@ -10,9 +10,10 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public abstract class GenericRepositoryAbstract<T>
@@ -38,7 +39,7 @@ public abstract class GenericRepositoryAbstract<T>
 		return entityManager.createQuery("from " + classToBePassed.getName()).getResultList();
 	}
 
-	@Transactional
+	@Transactional( propagation = Propagation.REQUIRED )
 	public void create(final T entity) 
 	{
 		try
