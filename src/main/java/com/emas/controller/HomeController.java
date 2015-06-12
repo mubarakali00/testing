@@ -100,7 +100,9 @@ public class HomeController {
 	
 	private void testingDB() {
 		
-		bll.dbTesting();
+		
+			bll.dbTesting();
+		
 	}
 	
 }

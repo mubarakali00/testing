@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.emas.jpa.util.EntityRef;
@@ -16,6 +15,8 @@ import com.emas.jpa.util.EntityRef;
 @Entity
 @Table( name = EntityRef.TableHospital.TABLE_NAME )
 public class HospitalEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.AUTO )

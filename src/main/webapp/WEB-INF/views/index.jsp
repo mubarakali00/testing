@@ -15,7 +15,3 @@
 	</jsp:body>
 	
 </t:genericpage>
-
-<%-- <jsp:attribute name="header">
-      	<h1>Welcome to the generic header...</h1>
-    </jsp:attribute> --%>
