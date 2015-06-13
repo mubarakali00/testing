@@ -70,18 +70,9 @@ public class EmasConfig {
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty( "hibernate.hbm2ddl.auto" ) );
 		hibernateProperties.setProperty( "hibernate.show_sql", env.getProperty( "hibernate.show_sql" ) );
 		hibernateProperties.setProperty( "hibernate.dialect", env.getProperty( "hibernate.dialect" ) );
-//		hibernateProperties.setProperty( "hibernate.transaction.manager_lookup_class", "org.hibernate.transaction.BTMTransactionManagerLookup" );
-//		hibernateProperties.setProperty( "hibernate.transaction.jta.platform", BitronixJtaPlatform.class.getName() );
-//		hibernateProperties.setProperty( "hibernate.transaction.jta.platform", "org.hibernate.service.jta.platform.internal.BitronixJtaPlatform" );
-		
+		hibernateProperties.setProperty( "hibernate.format_sql", env.getProperty( "hibernate.format_sql" ) );
 		hibernateProperties.setProperty( "hibernate.transaction.jta.platform" , "org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" );
 		hibernateProperties.setProperty( "hibernate.transaction.factory_class", "org.hibernate.transaction.CMTTransactionFactory" );
-//		hibernateProperties.setProperty( "hibernate.connection.release_mode", "after_statement" );
-//		hibernateProperties.setProperty( "hibernate.current_session_context_class", "jta" );
-//		hibernateProperties.setProperty( "hibernate.transaction.manager_lookup_class", "org.hibernate.transaction.JBossTransactionManagerLookup" );
-//		hibernateProperties.setProperty( "jboss.entity.manager.factory.jndi.name", "java:jboss/EmasDSXA" );
-//		hibernateProperties.setProperty( "hibernate.ejb.entitymanager_factory_name", "Emas" );
-//		hibernateProperties.setProperty( "jboss.entity.manager.factory.jndi.name", "java:jboss/EmasDSXA" );
 		
 		return hibernateProperties;
 	}
