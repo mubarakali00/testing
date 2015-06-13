@@ -1,9 +1,7 @@
 package com.emas.bll;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.emas.jpa.entity.HospitalEntity;
@@ -21,28 +19,26 @@ public class MainBll {
 	@Autowired
 	private ITestingRepository testRepo;
 	
-	@Transactional//( propagation = Propagation.REQUIRES_NEW )
+	@Transactional
 	public void dbTesting() {
 		
 		Hospital();
 		Test();
 	}
 	
-//	@Transactional( "emasTransactionManager" )
 	private void Hospital() {
 		
 		HospitalEntity hospital = new HospitalEntity();
-		hospital.setAddress( "Testing 12 " );
-		hospital.setHospitalName( "Mubarak Ali 12" );
+		hospital.setAddress( "Testing 14 " );
+		hospital.setHospitalName( "Mubarak Ali 14" );
 		hospitalRepo.saveAndFlush( hospital );
 	}
 	
-//	@Transactional( "testTransactionManager" )
 	private void Test() {
 		
 		TestEntity test = new TestEntity();
-		test.setName("Testing..a.");
-		test.setFatherName( "father_test as" );
+		test.setName("Testing... 1234");
+		test.setFatherName( "father_test 1234" );
 		testRepo.saveAndFlush( test );
 	}
 	

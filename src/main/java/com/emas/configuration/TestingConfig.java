@@ -20,7 +20,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
 @PropertySource({ "classpath:database.properties" })
-//@DependsOn("transactionManager")
 @EnableJpaRepositories( basePackages = "com.testing.jpa.repository", entityManagerFactoryRef = "testEntityManager", transactionManagerRef = "transactionManager" )
 public class TestingConfig {
 	
@@ -43,7 +42,7 @@ public class TestingConfig {
         return em;
     }
 
-    @Bean//(initMethod = "init", destroyMethod = "close")
+    @Bean
     public DataSource testDataSource() {
     	
     	DataSource ds = null;
@@ -51,7 +50,7 @@ public class TestingConfig {
 			
 			Context ctx = new InitialContext();
 			ds = (DataSource) ctx.lookup("java:jboss/TestingDSXA");
-			System.out.println( "Connected database name =====>" + ds.getConnection().getCatalog() );
+			System.out.println( "Connected database name ===>" + ds.getConnection().getCatalog() );
 			
 		} catch (NamingException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -59,34 +58,7 @@ public class TestingConfig {
 		}
 		
     	return ds;
-    	
-    	/*PoolingDataSource dataSource = new PoolingDataSource();
-    	dataSource.setUniqueName("test-postgres");
-    	dataSource.setClassName( "org.postgresql.xa.PGXADataSource" );
-//    	dataSource.setClassName( "org.postgresql.Driver" );
-//    	dataSource.setClassName( "bitronix.tm.resource.jdbc.lrc.LrcXADataSource" );
-    	dataSource.setMinPoolSize( 1 );
-    	dataSource.setMaxPoolSize( 5 );
-    	dataSource.setAllowLocalTransactions( true );
-    	dataSource.setDriverProperties( datasourceProperties() );
-    	return (DataSource) dataSource;*/
-    	
-        /*final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName( env.getProperty( "db.driver" ) );
-        dataSource.setUrl( env.getProperty( "db.url.test" ) );
-        dataSource.setUsername( env.getProperty( "db.username" ) );
-        dataSource.setPassword( env.getProperty( "db.password" ) );
-
-        return dataSource;*/
     }
-
-    /*@Bean
-    public PlatformTransactionManager testTransactionManager() {
-    	
-        final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory( testEntityManager().getObject() );
-        return transactionManager;
-    }*/
     
     final Properties additionalProperties() {
 		
@@ -109,31 +81,7 @@ public class TestingConfig {
 //        hibernateProperties.setProperty( "hibernate.transaction.manager_lookup_class", "org.hibernate.transaction.JBossTransactionManagerLookup" );
 //        hibernateProperties.setProperty( "jboss.entity.manager.factory.jndi.name", "java:jboss/TestingDSXA" );
 //        hibernateProperties.setProperty( "hibernate.ejb.entitymanager_factory_name", "Testing" );
-//        hibernateProperties.setProperty( "hibernate.transaction.manager_lookup_class", "org.hibernate.transaction.BTMTransactionManagerLookup" );
 		return hibernateProperties;
 	}
-    
-   /* final Properties datasourceProperties() {
-		
-		final Properties datasourceProperties = new Properties();
-		
-        datasourceProperties.setProperty( "user", env.getProperty( "db.username" ) );
-        datasourceProperties.setProperty( "password", env.getProperty( "db.password" ) );
-        datasourceProperties.setProperty( "url", env.getProperty( "db.url.test" ) );
-        datasourceProperties.setProperty( "driverClassName", env.getProperty( "db.driver" ) );
-//        datasourceProperties.setProperty( "serverName", env.getProperty( "db.serverName" ) );
-//        datasourceProperties.setProperty( "portNumber" , env.getProperty( "db.portNumber" ) );
-//        datasourceProperties.setProperty( "databaseName" , env.getProperty( "db.databaseName" ) );
-		return datasourceProperties;
-	}*/
-    
-    /*@Bean
-	public PlatformTransactionManager emasTransactionManager() {
-		
-		final JtaTransactionManager transactionManager = new JtaTransactionManager();
-		transactionManager.setTransactionManagerName( "java:jboss/TransactionManager" );
-		transactionManager.setUserTransactionName( "java:jboss/UserTransaction" );
-		return transactionManager;
-	}*/
 
 }
