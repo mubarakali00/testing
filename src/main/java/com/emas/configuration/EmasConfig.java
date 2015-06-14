@@ -1,11 +1,7 @@
 package com.emas.configuration;
 
-import java.sql.SQLException;
 import java.util.Properties;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
@@ -16,6 +12,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
@@ -48,7 +45,7 @@ public class EmasConfig {
 	@Primary
 	public DataSource emasDataSource() {
 
-		DataSource ds = null;
+		/*DataSource ds = null;
 		try {
 
 			Context ctx = new InitialContext();
@@ -59,8 +56,14 @@ public class EmasConfig {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	return ds;
+    	return ds;*/
+		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName( env.getProperty( "db.driver" ) );
+		dataSource.setUrl( env.getProperty( "db.url.emas" ) );
+		dataSource.setUsername( env.getProperty( "db.username" ) );
+		dataSource.setPassword( env.getProperty( "db.password" ) );
 
+		return dataSource;
 	}
 
 	final Properties additionalProperties() {
