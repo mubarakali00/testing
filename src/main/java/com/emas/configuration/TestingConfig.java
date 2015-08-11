@@ -50,7 +50,7 @@ public class TestingConfig {
 			System.out.println( "Connected database name ===>" + ds.getConnection().getCatalog() );
 			
 		} catch (NamingException | SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		

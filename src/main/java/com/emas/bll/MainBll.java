@@ -13,7 +13,6 @@ import com.testing.jpa.repository.ITestingRepository;
 public class MainBll {
 
 	@Autowired
-	
 	private IHospitalRepository hospitalRepo;
 	
 	@Autowired
